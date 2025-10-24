@@ -1,10 +1,10 @@
 ---
 import { getCollection } from "astro:content";
-import Layout from "~/layouts/Layout.astro";
-import Section from "~/components/Section.astro";
+import CardBlogPost from "~/components/CardBlogPost.astro";
 import Container from "~/components/Container.astro";
 import Heading from "~/components/Heading.astro";
-import CardBlogPost from "~/components/CardBlogPost.astro";
+import Section from "~/components/Section.astro";
+import Layout from "~/layouts/Layout.astro";
 const posts = await getCollection("blog");
 ---
 
@@ -14,8 +14,8 @@ const posts = await getCollection("blog");
 			<Heading>
 				<h1 slot="heading-title">Blog</h1>
 				<p slot="heading-content">
-					Welcome to our blog. Here you can find the latest news and updates about our car dealer. Stay tuned
-					for new blog posts.
+					Bienvenido a nuestro blog. Aquí puedes encontrar las últimas noticias y actualizaciones sobre nuestro concesionario de autos. Mantente al tanto
+					de nuevas publicaciones en el blog.
 				</p>
 			</Heading>
 

@@ -1,31 +1,31 @@
 // Global variables
-export const siteLang = "en-US";
-export const siteCurrency = "USD";
-export const siteDomain = "hyperdrive.com";
-export const siteName = "HyperDrive";
-export const siteSlogan = "The best car dealership in the galaxy!";
+export const siteLang = "es-ES";
+export const siteCurrency = "EUR";
+export const siteDomain = "templateconcesionarios.com";
+export const siteName = "Template Concesionarios";
+export const siteSlogan = "El mejor template para concesionarios de vehículos, motos y lanchas!";
 export const themeColor = "#fef08a";
-export const unitSystem = "imperial";
+export const unitSystem = "metric";
 export const interestRate = 5.12;
 export const defaultPaginationSize = 12;
 export const priceSteps = [50000, 100000, 150000, 200000, 250000, 300000];
 
 export const phone = {
-	href: "tel:+123456789",
-	label: "(123) 456-789",
+	href: "tel:+34123456789",
+	label: "+34 123 456 789",
 };
 
 export const email = {
-	href: "mailto:info@hyperdrive.com",
-	label: "info@hyperdrive.com",
+	href: "mailto:info@templateconcesionarios.com",
+	label: "info@templateconcesionarios.com",
 };
 
 export const address = {
-	street: "1234 Space Street",
-	city: "Galaxy City",
-	zip: "12345",
-	state: "Milky Way",
-	country: "Space",
+	street: "Calle Ejemplo 123",
+	city: "Madrid",
+	zip: "28001",
+	state: "Madrid",
+	country: "España",
 };
 
 export const socialMedia = {

@@ -1,29 +1,29 @@
 [
 	{
-		"name": "John Doe",
-        "slug": "john-doe",
-		"role": "CEO",
+		"name": "Juan Pérez",
+        "slug": "juan-perez",
+		"role": "Director Ejecutivo",
 		"image": "/src/assets/images/team/pexels-kaleef-lawal-1481864847-27897903.jpg",
-		"alt": "image of John Doe",
-        "email": "john@hyperdrive.netlify.app",
-        "phone": "+1 234 567 890"
+		"alt": "imagen de Juan Pérez",
+        "email": "juan@templateconcesionarios.com",
+        "phone": "+34 123 456 789"
 	},
 	{
-		"name": "Jane Doe",
-        "slug": "jane-doe",
-		"role": "CTO",
+		"name": "María García",
+        "slug": "maria-garcia",
+		"role": "Directora Técnica",
 		"image": "/src/assets/images/team/pexels-apunto-group-agencia-de-publicidad-53086916-7752788.jpg",
-		"alt": "image of Jane Doe",
-        "email": "jane@hyperdrive.netlify.app",
-        "phone": "+1 234 567 891"
+		"alt": "imagen de María García",
+        "email": "maria@templateconcesionarios.com",
+        "phone": "+34 123 456 790"
 	},
 	{
-		"name": "John Smith",
-        "slug": "john-smith",
-		"role": "CFO",
+		"name": "Carlos López",
+        "slug": "carlos-lopez",
+		"role": "Director Financiero",
 		"image": "/src/assets/images/team/pexels-vazhnik-7562139.jpg",
-		"alt": "image of John Smith",
-        "email": "john.smith@hyperdrive.netlify.app",
-        "phone": "+1 234 567 892"
+		"alt": "imagen de Carlos López",
+        "email": "carlos@templateconcesionarios.com",
+        "phone": "+34 123 456 791"
 	}
 ]

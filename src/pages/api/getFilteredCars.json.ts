@@ -43,7 +43,7 @@ export const GET: APIRoute = async ({ request }) => {
 	const afterValidation = performance.now();
 
 	if (!result.success) {
-		return new Response(JSON.stringify({ error: "Invalid search parameters" }), {
+		return new Response(JSON.stringify({ error: "Parámetros de búsqueda inválidos" }), {
 			status: 400,
 			headers: { "content-type": "application/json" },
 		});

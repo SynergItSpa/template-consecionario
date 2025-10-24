@@ -1,28 +1,28 @@
 ---
 import { Image } from "astro:assets";
-import Layout from "~/layouts/Layout.astro";
-import Section from "~/components/Section.astro";
-import Container from "~/components/Container.astro";
 import Button from "~/components/Button.astro";
-import Hero from "~/components/Hero.astro";
+import Container from "~/components/Container.astro";
 import Faq from "~/components/Faq.astro";
-import Heading from "~/components/Heading.astro";
-import WidgetSearch from "~/components/WidgetSearch.astro";
 import Grid from "~/components/Grid.astro";
 import GridItem from "~/components/GridItem.astro";
+import Heading from "~/components/Heading.astro";
+import Hero from "~/components/Hero.astro";
+import Section from "~/components/Section.astro";
 import ShowPosts from "~/components/ShowPosts.astro";
-import Team from "~/components/Team.astro";
 import Stats from "~/components/Stats.astro";
+import Team from "~/components/Team.astro";
+import WidgetSearch from "~/components/WidgetSearch.astro";
+import Layout from "~/layouts/Layout.astro";
 
 // Images
-import ImageCarDealer from "~/assets/images/pexels-shkrabaanthony-7144179.jpg";
 import ImageHeadingBackground from "~/assets/images/pexels-jeshoots-com-147458-451590.jpg";
-import ShowCars from "~/components/ShowCars.astro";
 import ImageOne from "~/assets/images/pexels-leif-bergerson-99376750-9764731.webp";
+import ImageCarDealer from "~/assets/images/pexels-shkrabaanthony-7144179.jpg";
 import ImageTwo from "~/assets/images/pexels-zenzazione-2922140.webp";
+import ShowCars from "~/components/ShowCars.astro";
 ---
 
-<Layout pageTitle="Home">
+<Layout pageTitle="Inicio">
 	{/* Main Heading */}
 	<Section class:list={"relative"}>
 		<Image
@@ -34,11 +34,10 @@ import ImageTwo from "~/assets/images/pexels-zenzazione-2922140.webp";
 		<Container class:list={"relative z-10"}>
 			<Heading class:list={"prose-invert max-w-4xl"}>
 				<h1 slot="heading-title" class="mb-0 lg:text-7xl text-balance">
-					Find your next car in our exclusive collection
+					Descubre el template perfecto para tu concesionario
 				</h1>
 				<p slot="heading-content">
-					Search for your next car here. We have a wide range of cars for sale. Browse through our collection
-					and find the perfect car that suits your needs and budget.
+					Solicítalo ahora para tu concesionario de vehículos, motos o lanchas. Este template se vende solo con su diseño moderno y funcionalidades avanzadas.
 				</p>
 			</Heading>
 			<WidgetSearch />
@@ -50,16 +49,15 @@ import ImageTwo from "~/assets/images/pexels-zenzazione-2922140.webp";
 		<Container>
 			<Hero>
 				<div slot="hero-left" class="prose lg:max-w-2xl">
-					<h2>Welcome to our car dealer!</h2>
+					<h2>Bienvenido a nuestro template de concesionarios</h2>
 					<p>
-						Find your next car here. We have a wide range of cars for sale. Browse through our collection
-						and find the perfect car that suits your needs and budget.
+						Este template es ideal para concesionarios de vehículos, motos y lanchas. Con un diseño atractivo y funcionalidades completas.
 					</p>
 
-					<Button href="/cars" class:list={"mt-4"}>View all cars</Button>
+					<Button href="/cars" class:list={"mt-4"}>Ver ejemplos</Button>
 				</div>
 				<div slot="hero-right">
-					<Image src={ImageCarDealer} alt="Car dealer" />
+					<Image src={ImageCarDealer} alt="Template de concesionario" />
 				</div>
 			</Hero>
 		</Container>
@@ -69,37 +67,33 @@ import ImageTwo from "~/assets/images/pexels-zenzazione-2922140.webp";
 	<Section>
 		<Container>
 			<Grid>
-				<GridItem image={ImageOne} imageAlt="Car dealer" span={2} link="/cars" As="a" xl>
-					<h2>Featured cars</h2>
+				<GridItem image={ImageOne} imageAlt="Template de concesionario" span={2} link="/cars" As="a" xl>
+					<h2>Vehiculos destacados</h2>
 					<p>
-						Discover the ultimate driving experience with our exclusive collection of featured cars. Whether
-						you're looking for a sleek sports car, a reliable family vehicle, or an eco-friendly hybrid, we
-						have something for everyone. Our extensive inventory is carefully curated to ensure that you
-						find the perfect match for your lifestyle and budget.
+						Descubre la experiencia definitiva de conducir el auto de tus sueños. Ya sea que busques un SUV familiar o un elegante deportivo, en nuestro sitio encontrarás lo que buscas. Nuestro inventario se mantiene activamente actualizado para asegurar que encuentres la opción perfecta para ti o tu negocio.
 					</p>
 					<Button As="button" type="button" color="white-outline" class:list={"mt-4 group-hover:bg-white/10"}
-						>View all cars</Button
+						>Ver todos los templates</Button
 					>
 				</GridItem>
 
-				<GridItem image={ImageTwo} imageAlt="Car dealer" link="/cars" As="a">
-					<h3>Featured cars</h3>
+				<GridItem image={ImageTwo} imageAlt="Template de concesionario" link="/cars" As="a">
+					<h3>Templates destacados</h3>
 					<p>
-						Discover the ultimate driving experience with our exclusive collection of featured cars. Whether
-						you're looking for a sleek sports car, a reliable family vehicle, or an eco-friendly hybrid, we
-						have something for everyone.
+						Descubre la experiencia definitiva con nuestra exclusiva colección de templates destacados. Ya sea que busques un diseño elegante para autos deportivos, un sitio confiable para vehículos familiares o un template ecológico para híbridos, tenemos algo para todos.
 					</p>
 					<Button As="button" type="button" color="white-outline" class:list={"mt-4 group-hover:bg-white/10"}
-						>View all cars</Button
+						>Ver todos los templates</Button
 					>
 				</GridItem>
 
 				<GridItem>
-					<h3>Featured cars</h3>
+					<h3>Templates destacados</h3>
 					<p>
-						Discover the ultimate driving experience with our exclusive collection of featured cars. Whether
-						you're looking for a sleek sports car, a reliable family vehicle, or an eco-friendly hybrid, we
-						have something for everyone.
+						Descubre la experiencia definitiva con nuestra exclusiva colección de templates destacados. Ya sea que busques un diseño elegante para autos deportivos, un sitio confiable para vehículos familiares o un template ecológico para híbridos, tenemos algo para todos.
+					</p>
+				</GridItem>
+						ya sea que busques un deportivo elegante, un vehículo familiar confiable o un híbrido ecológico, tenemos algo para todos.
 					</p>
 				</GridItem>
 			</Grid>
@@ -111,14 +105,13 @@ import ImageTwo from "~/assets/images/pexels-zenzazione-2922140.webp";
 		<Container>
 			<Hero invert>
 				<div slot="hero-left" class="prose lg:max-w-2xl">
-					<h2>Welcome to our car dealer!</h2>
+					<h2>Bienvenido a nuestro template de concesionarios</h2>
 					<p>
-						Find your next car here. We have a wide range of cars for sale. Browse through our collection
-						and find the perfect car that suits your needs and budget.
+						Este template es ideal para concesionarios de vehículos, motos y lanchas. Con un diseño atractivo y funcionalidades completas.
 					</p>
 				</div>
 				<div slot="hero-right">
-					<Image src={ImageCarDealer} alt="Car dealer" />
+					<Image src={ImageCarDealer} alt="Template de concesionario" />
 				</div>
 			</Hero>
 		</Container>
@@ -128,10 +121,9 @@ import ImageTwo from "~/assets/images/pexels-zenzazione-2922140.webp";
 	<Section class:list={"bg-blue-50"}>
 		<Container>
 			<Heading>
-				<h2 slot="heading-title" class="mb-0">Featured cars</h2>
+				<h2 slot="heading-title" class="mb-0">Templates destacados</h2>
 				<p slot="heading-content">
-					Search for your next car here. We have a wide range of cars for sale. Browse through our collection
-					and find the perfect car that suits your needs and budget.
+					Busca el template perfecto aquí. Tenemos una amplia gama de templates para concesionarios de vehículos, motos y lanchas. Navega por nuestra colección y encuentra el template ideal que se adapte a tus necesidades y presupuesto.
 				</p>
 			</Heading>
 
@@ -143,30 +135,29 @@ import ImageTwo from "~/assets/images/pexels-zenzazione-2922140.webp";
 	<Section>
 		<Container>
 			<Heading class:list={"text-center mx-auto"}>
-				<h2 slot="heading-title" class="text-balance">Why choose us?</h2>
+				<h2 slot="heading-title" class="text-balance">¿Por qué elegir nuestro template?</h2>
 				<p slot="heading-content">
-					We are the leading car dealer in the country. With over 20 years of experience, we have helped
-					thousands of customers find their dream car.
+					Somos el proveedor líder de templates para concesionarios en el país. Con más de 20 años de experiencia, hemos ayudado a miles de clientes a crear sitios web impresionantes para sus negocios.
 				</p>
 			</Heading>
 
 			<Stats
 				items={[
 					{
-						title: "Cars in stock",
+						title: "Templates vendidos",
 						value: "259",
 						animateNumber: true,
 						animateFrom: 100,
 					},
 					{
-						title: "Satified customers",
+						title: "Clientes satisfechos",
 						value: "1088",
 						animateNumber: true,
 						animateFrom: 800,
 					},
 					{
-						title: "Experience",
-						value: "20+ years",
+						title: "Experiencia",
+						value: "20+ años",
 					},
 				]}
 			/>
@@ -177,15 +168,13 @@ import ImageTwo from "~/assets/images/pexels-zenzazione-2922140.webp";
 	<Section class:list={"bg-gradient-to-br from-gray-900 to-gray-700"}>
 		<Container>
 			<Heading class:list={"mb-0 lg:mb-0 prose-invert text-center mx-auto"}>
-				<h2 slot="heading-title">Can't find the ideal car?</h2>
+				<h2 slot="heading-title">¿No encuentras el template ideal?</h2>
 
 				<p slot="heading-content">
-					Our team is here to help you find the perfect car that suits your needs and budget. Whether you're
-					looking for a sleek sports car, a reliable family vehicle, or an eco-friendly hybrid, we have
-					something for everyone.
+					Nuestro equipo está aquí para ayudarte a encontrar el template perfecto que se adapte a tus necesidades y presupuesto. Ya sea que busques un diseño elegante para autos deportivos, un sitio confiable para vehículos familiares o un template ecológico para híbridos, tenemos algo para todos.
 				</p>
 
-				<Button href="/contact" color="white" class:list={"mt-8"}>Contact us</Button>
+				<Button href="/contact" color="white" class:list={"mt-8"}>Contáctanos</Button>
 			</Heading>
 		</Container>
 	</Section>
@@ -194,10 +183,9 @@ import ImageTwo from "~/assets/images/pexels-zenzazione-2922140.webp";
 	<Section class:list={"bg-gray-50"}>
 		<Container>
 			<Heading>
-				<h2 slot="heading-title" class="mb-0">Recent cars</h2>
+				<h2 slot="heading-title" class="mb-0">Templates recientes</h2>
 				<p slot="heading-content">
-					Search for your next car here. We have a wide range of cars for sale. Browse through our collection
-					and find the perfect car that suits your needs and budget.
+					Busca el template perfecto aquí. Tenemos una amplia gama de templates para concesionarios de vehículos, motos y lanchas. Navega por nuestra colección y encuentra el template ideal que se adapte a tus necesidades y presupuesto.
 				</p>
 			</Heading>
 
@@ -209,11 +197,10 @@ import ImageTwo from "~/assets/images/pexels-zenzazione-2922140.webp";
 	<Section>
 		<Container>
 			<Heading class:list={"max-w-3xl"}>
-				<h2 slot="heading-title">Latest news</h2>
+				<h2 slot="heading-title">Últimas noticias</h2>
 
 				<p slot="heading-content">
-					Stay up to date with the latest news and updates from our car dealer. Read our blog posts to learn
-					more about our featured cars, special offers, and industry news.
+					Mantente al día con las últimas noticias y actualizaciones de nuestros templates. Lee nuestras publicaciones de blog para aprender más sobre nuestros templates destacados, ofertas especiales y noticias de la industria.
 				</p>
 			</Heading>
 
@@ -225,27 +212,26 @@ import ImageTwo from "~/assets/images/pexels-zenzazione-2922140.webp";
 	<Section class:list={"bg-gray-50"}>
 		<Container>
 			<Heading class:list={"max-w-3xl mx-auto lg:text-center"}>
-				<h2 slot="heading-title">Welcome to our car dealer!</h2>
+				<h2 slot="heading-title">Bienvenido a nuestro template de concesionarios</h2>
 
 				<p slot="heading-content">
-					Find your next car here. We have a wide range of cars for sale. Browse through our collection and
-					find the perfect car that suits your needs and budget.
+					Este template es perfecto para concesionarios de vehículos, motos y lanchas. Navega por nuestra colección y encuentra el template ideal que se adapte a tus necesidades y presupuesto.
 				</p>
 			</Heading>
 
 			<Faq
 				items={[
 					{
-						question: "What's the best thing about Switzerland?",
-						answer: "I don't know, but the flag is a big plus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
+						question: "¿Cuál es lo mejor de este template?",
+						answer: "Es completamente personalizable y se adapta a cualquier tipo de concesionario. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
 					},
 					{
-						question: "What do you call a fake noodle?",
-						answer: "An impasta. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
+						question: "¿Cómo se llama un template falso?",
+						answer: "Un impostor. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
 					},
 					{
-						question: "What do you call a belt made out of watches?",
-						answer: "A waist of time. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
+						question: "¿Cómo se llama un cinturón hecho de relojes?",
+						answer: "Una pérdida de tiempo. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
 					},
 				]}
 			/>
@@ -256,12 +242,10 @@ import ImageTwo from "~/assets/images/pexels-zenzazione-2922140.webp";
 	<Section>
 		<Container>
 			<Heading class:list={"max-w-3xl mx-auto lg:text-center"}>
-				<h2 slot="heading-title">Our team</h2>
+				<h2 slot="heading-title">Nuestro equipo</h2>
 
 				<p slot="heading-content">
-					Meet the team behind our car dealer. Our dedicated staff is here to help you find the perfect car
-					that suits your needs and budget. Whether you're looking for a sleek sports car, a reliable family
-					vehicle, or an eco-friendly hybrid, we have something for everyone.
+					Conoce al equipo detrás de este template. Nuestro personal dedicado está aquí para ayudarte a encontrar el template perfecto que se adapte a tus necesidades y presupuesto. Ya sea que busques un diseño elegante para autos deportivos, un sitio confiable para vehículos familiares o un template ecológico para híbridos, tenemos algo para todos.
 				</p>
 			</Heading>
 

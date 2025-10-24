@@ -1,22 +1,22 @@
 ---
-import { address, email, phone } from "~/data/config";
-import Layout from "~/layouts/Layout.astro";
-import Section from "~/components/Section.astro";
 import Container from "~/components/Container.astro";
 import Heading from "~/components/Heading.astro";
+import Section from "~/components/Section.astro";
 import FormContact from "~/components/forms/Contact.astro";
+import { address, email, phone } from "~/data/config";
+import Layout from "~/layouts/Layout.astro";
 ---
 
-<Layout pageTitle="Contact">
+<Layout pageTitle="Contacto">
 	<Section class:list={"bg-gray-50"}>
 		<Container>
 			<div class="grid grid-cols-1 lg:grid-cols-2">
 				<div class="pb-20 pt-24 sm:pt-32 lg:static lg:px-8">
 					<div class="mx-auto max-w-xl lg:mx-0 lg:max-w-lg">
 						<Heading>
-							<h1 class="h2" slot="heading-title">Send us a message</h1>
+							<h1 class="h2" slot="heading-title">Envíanos un mensaje</h1>
 							<p slot="heading-content">
-								We'd love to hear from you. Fill out the form below to get in touch with us.
+								Nos encantaría saber de ti. Completa el formulario a continuación para ponerte en contacto con nosotros.
 							</p>
 						</Heading>
 						<dl class="mt-10 space-y-4 text-base">
@@ -24,7 +24,7 @@ import FormContact from "~/components/forms/Contact.astro";
 								address && (
 									<div class="flex gap-x-4">
 										<dt class="flex-none">
-											<span class="sr-only">Address</span>
+											<span class="sr-only">Dirección</span>
 											<svg
 												class="size-6"
 												fill="none"
@@ -53,7 +53,7 @@ import FormContact from "~/components/forms/Contact.astro";
 								phone && (
 									<div class="flex gap-x-4">
 										<dt class="flex-none">
-											<span class="sr-only">Telephone</span>
+											<span class="sr-only">Teléfono</span>
 											<svg
 												class="size-6"
 												fill="none"
@@ -82,7 +82,7 @@ import FormContact from "~/components/forms/Contact.astro";
 								email && (
 									<div class="flex gap-x-4">
 										<dt class="flex-none">
-											<span class="sr-only">Email</span>
+											<span class="sr-only">Correo electrónico</span>
 											<svg
 												class="size-6"
 												fill="none"

@@ -7,7 +7,7 @@ export const GET: APIRoute = async ({ request }) => {
 	const make = url.searchParams.get("make");
 
 	if (!make) {
-		return new Response(JSON.stringify({ error: "Invalid search parameters" }), {
+		return new Response(JSON.stringify({ error: "Parámetros de búsqueda inválidos" }), {
 			status: 400,
 			headers: { "content-type": "application/json" },
 		});
@@ -21,7 +21,7 @@ export const GET: APIRoute = async ({ request }) => {
 	// console.log(allModelNames);
 
 	if (!allModelNames || allModelNames.length === 0) {
-		return new Response(JSON.stringify({ error: "No models found" }), {
+		return new Response(JSON.stringify({ error: "No se encontraron modelos" }), {
 			status: 404,
 			headers: { "content-type": "application/json" },
 		});

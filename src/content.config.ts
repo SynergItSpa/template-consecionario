@@ -1,9 +1,9 @@
-import { z, defineCollection } from "astro:content";
-import { glob, file } from "astro/loaders";
+import { file, glob } from "astro/loaders";
+import { defineCollection, z } from "astro:content";
 
 export const bodyTypes = ["SUV", "Sedan", "Hatchback", "Coupe", "Convertible", "Pickup"] as const;
 export const fuelTypes = ["Petrol", "Diesel", "Hybrid", "Electric", "CNG"] as const;
-export const conditions = ["New", "Used", "Certified Pre-Owned"] as const;
+export const conditions = ["New", "Usado", "Certified Pre-Owned"] as const;
 export const transmission = ["Automatic", "Manual", "CVT", "Dual-Clutch"] as const;
 export const blogCategories = {
 	news: "indigo",

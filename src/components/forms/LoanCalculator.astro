@@ -12,7 +12,7 @@ const { price } = Astro.props;
 <form id="form-loan-calculator">
 	<div class="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8">
 		<div class="lg:col-span-1">
-			<label for="amount">Loan amount</label>
+			<label for="amount">Monto del préstamo</label>
 			<div class="mt-1 relative rounded-md shadow-sm">
 				<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
 					<span class="text-gray-500 sm:text-sm">{currency}</span>
@@ -30,11 +30,11 @@ const { price } = Astro.props;
 					value={price}
 				/>
 			</div>
-			<p class="mt-2 text-xs text-gray-500" id="loan-amount-description">The amount you want to borrow</p>
+			<p class="mt-2 text-xs text-gray-500" id="loan-amount-description">El monto que deseas pedir prestado</p>
 		</div>
 
 		<div class="lg:col-span-1">
-			<label for="duration"> Loan duration </label>
+			<label for="duration">Duración del préstamo</label>
 			<div class="grid grid-cols-1">
 				<select
 					name="duration"
@@ -51,11 +51,11 @@ const { price } = Astro.props;
 				</select>
 				<IconChevronDown class="icon-chevron-down" />
 			</div>
-			<p class="mt-2 text-xs text-gray-500" id="loan-duration-description">The duration of the loan in months</p>
+			<p class="mt-2 text-xs text-gray-500" id="loan-duration-description">La duración del préstamo en meses</p>
 		</div>
 
 		<div class="lg:col-span-1">
-			<label for="finalinstallment">Final Installment</label>
+			<label for="finalinstallment">Cuota final</label>
 			<div class="mt-1 relative rounded-md shadow-sm">
 				<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
 					<span class="text-gray-500 sm:text-sm">{currency}</span>
@@ -72,14 +72,14 @@ const { price } = Astro.props;
 				/>
 			</div>
 			<p class="mt-2 text-xs text-gray-500" id="loan-final-installment-description">
-				The final payment you wish to make at the end of the loan term
+				El pago final que deseas hacer al final del plazo del préstamo
 			</p>
 		</div>
 
 		<div class="lg:col-span-1 flex items-center justify-center">
 			<button type="submit" class="button button-black w-full gap-1">
 				<IconCalculator class="size-4 -mt-0.5" />
-				<span>Calculate</span>
+				<span>Calcular</span>
 			</button>
 		</div>
 	</div>
@@ -92,17 +92,17 @@ const { price } = Astro.props;
 			class="bg-white rounded-lg lg:border-2 border-gray-200 p-4 grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-8 relative"
 		>
 			<div>
-				<span class="block text-sm font-semibold">Monthly payment</span>
+				<span class="block text-sm font-semibold">Pago mensual</span>
 				<span id="loan-monthly-payment" class="block"></span>
 			</div>
 
 			<div>
-				<span class="block text-sm font-semibold">Interest rate</span>
+				<span class="block text-sm font-semibold">Tasa de interés</span>
 				<span class="block">{interestRate}%</span>
 			</div>
 
 			<div>
-				<span class="block text-sm font-semibold">Total payment</span>
+				<span class="block text-sm font-semibold">Pago total</span>
 				<span id="loan-total-payment" class="block"></span>
 			</div>
 

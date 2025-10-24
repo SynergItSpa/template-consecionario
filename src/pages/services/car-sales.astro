@@ -1,35 +1,33 @@
 ---
-import Layout from "~/layouts/Layout.astro";
-import Section from "~/components/Section.astro";
 import Container from "~/components/Container.astro";
-import Heading from "~/components/Heading.astro";
 import FAQ from "~/components/Faq.astro";
+import Heading from "~/components/Heading.astro";
+import Section from "~/components/Section.astro";
+import Layout from "~/layouts/Layout.astro";
 
 const faqItems = [
     {
-        question: "What types of cars do you sell?",
-        answer: "We offer a variety of luxury cars including sedans, SUVs, and sports cars from top brands.",
+        question: "¿Qué tipos de autos venden?",
+        answer: "Ofrecemos una variedad de autos de lujo incluyendo sedanes, SUVs y autos deportivos de las mejores marcas.",
     },
     {
-        question: "Can I trade in my old car?",
-        answer: "Yes, we offer trade-in options. Our team will evaluate your car and provide a fair trade-in value.",
+        question: "¿Puedo entregar mi auto viejo?",
+        answer: "Sí, ofrecemos opciones de entrega. Nuestro equipo evaluará tu auto y proporcionará un valor justo de entrega.",
     },
     {
-        question: "Do you offer financing options?",
-        answer: "Yes, we provide flexible financing options to make your car purchase more affordable.",
+        question: "¿Ofrecen opciones de financiamiento?",
+        answer: "Sí, proporcionamos opciones de financiamiento flexibles para hacer tu compra de auto más asequible.",
     },
 ];
 ---
 
-<Layout pageTitle="Car Sales" title="Car Sales">
+<Layout pageTitle="Ventas de Autos" title="Ventas de Autos">
 	<Section class:list={"bg-gray-50"}>
 		<Container>
 			<Heading>
-				<h1 slot="heading-title">Car Sales</h1>
+				<h1 slot="heading-title">Ventas de Autos</h1>
 				<p slot="heading-content">
-					At HyperDrive, we offer top-notch repair services to keep your luxury car in perfect condition. Our
-					team of skilled technicians is equipped with the latest tools and technology to handle any repair
-					job, big or small.
+					En TemplateConcesionarios, ofrecemos servicios de venta de autos de primera clase para ayudarte a encontrar el vehículo perfecto. Nuestro equipo de ventas experimentado está dedicado a proporcionarte una experiencia de compra excepcional y asegurar tu completa satisfacción.
 				</p>
 			</Heading>
 		</Container>

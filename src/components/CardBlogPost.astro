@@ -1,7 +1,7 @@
 ---
-import type { CardBlogPost as Props } from "~/types";
-import { blogCategories } from "~/content.config";
 import { Image } from "astro:assets";
+import { blogCategories } from "~/content.config";
+import type { CardBlogPost as Props } from "~/types";
 import Pill from "./Pill.astro";
 
 const { post, index } = Astro.props;
@@ -27,7 +27,7 @@ const postData = post;
 				datetime={post.data.publishDate.toISOString()}
 				transition:name={`post-date-${post.id}`}
 			>
-				Posted on: {post.data.publishDate.toLocaleDateString()}
+				Publicado el: {post.data.publishDate.toLocaleDateString()}
 			</time>
 			<Pill title={post.data.category} color={blogCategories[postData.data.category]} />
 		</div>
@@ -40,6 +40,6 @@ const postData = post;
 			{postData.data.excerpt}
 		</p>
 
-		<a class="no-underline hover:underline block font-semibold" href={`/blog/${postData.id}`}>Read more &rarr;</a>
+		<a class="no-underline hover:underline block font-semibold" href={`/blog/${postData.id}`}>Leer más &rarr;</a>
 	</div>
 </article>

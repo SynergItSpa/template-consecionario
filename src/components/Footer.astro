@@ -1,8 +1,8 @@
 ---
-import { siteName } from "~/data/config";
-import { menuNavigation, menuMisc, menuService, menuLegal } from "~/data/menus";
-import NewsletterFooter from "./forms/NewsletterFooter.astro";
 import IconLogo from "~/assets/images/icons/logo.svg";
+import { siteName } from "~/data/config";
+import { menuLegal, menuMisc, menuNavigation, menuService } from "~/data/menus";
+import NewsletterFooter from "./forms/NewsletterFooter.astro";
 import SocialMediaIcons from "./SocialMediaIcons.astro";
 const year = new Date().getFullYear();
 ---
@@ -14,7 +14,7 @@ const year = new Date().getFullYear();
 				<a href="/">
 					<div class="flex items-center gap-x-2">
 						<IconLogo class="h-5 lg:h-8 inline-block" />
-						<span class="font-bold text-2xl lg:text-4xl">Hyper<span class="font-normal">Drive</span></span>
+						<span class="font-bold text-2xl lg:text-4xl">Template<span class="font-normal">Concesionarios</span></span>
 					</div>
 				</a>
 			</div>
@@ -105,9 +105,9 @@ const year = new Date().getFullYear();
 			class="mt-16 border-t border-gray-800/10 pt-8 sm:mt-20 lg:mt-24 lg:flex lg:items-center lg:justify-between"
 		>
 			<div>
-				<span class="text-base font-semibold">Subscribe to our newsletter</span>
+				<span class="text-base font-semibold">Subscríbete a nuestro boletín</span>
 				<p class="mt-2 text-sm text-gray-600">
-					The latest news, articles, and resources, sent to your inbox weekly.
+					Las últimas noticias, artículos y recursos, enviados a tu bandeja de entrada semanalmente.
 				</p>
 			</div>
 			<NewsletterFooter />
@@ -118,7 +118,7 @@ const year = new Date().getFullYear();
 			</div>
 			<p class="mt-8 text-sm/6 text-gray-600 md:order-1 md:mt-0">
 				&copy; {year}
-				{siteName}. All rights reserved.
+				{siteName}. Todos los derechos reservados.
 			</p>
 		</div>
 	</div>

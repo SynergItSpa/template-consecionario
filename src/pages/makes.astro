@@ -1,10 +1,10 @@
 ---
 import { getCollection } from "astro:content";
 
-import Layout from "~/layouts/Layout.astro";
-import Section from "~/components/Section.astro";
 import Container from "~/components/Container.astro";
 import Heading from "~/components/Heading.astro";
+import Section from "~/components/Section.astro";
+import Layout from "~/layouts/Layout.astro";
 
 const allCars = await getCollection("cars", ({ data }) => !data.misc?.hidden);
 const uniqueMakes = [...new Set(allCars.map((car) => car.data.general.make))];
@@ -23,15 +23,14 @@ const groupedMakes: Record<string, string[]> = uniqueMakes.reduce(
 );
 ---
 
-<Layout pageTitle="Makes">
+<Layout pageTitle="Marcas">
 	<Section class:list={"bg-white"}>
 		<Container class:list={"max-w-3xl"}>
 			<Heading>
-				<h1 slot="heading-title">Makes</h1>
+				<h1 slot="heading-title">Marcas</h1>
 
 				<p class="-mb-16" slot="heading-content">
-					Explore our range of makes for sale. We have a wide range of makes available to suit all budgets and
-					lifestyles.
+					Explora nuestra gama de marcas disponibles. Tenemos una amplia variedad de marcas para adaptarse a todos los presupuestos y estilos de vida.
 				</p>
 			</Heading>
 		</Container>
@@ -58,7 +57,7 @@ const groupedMakes: Record<string, string[]> = uniqueMakes.reduce(
 							))}
 					</ul>
 				) : (
-					<p>No makes available at the moment. Please check back later.</p>
+					<p>No hay marcas disponibles en este momento. Por favor, vuelve más tarde.</p>
 				)
 			}
 		</Container>

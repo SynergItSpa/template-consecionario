@@ -3,28 +3,28 @@ import type { MainMenuItem, MenuNavigation } from "~/types";
 export const menuMain: MainMenuItem[] = [
 	{
 		id: "home",
-		label: "Home",
+		label: "Inicio",
 		url: "/",
 	},
 	{
 		id: "cars",
-		label: "Cars",
+		label: "Vehículos",
 		url: "/cars",
 	},
 	{
 		id: "about",
-		label: "About",
+		label: "Acerca de",
 		url: "/about-us",
-		submenu: [{ id: "testimonials", label: "Testimonials", url: "/about-us/testimonials" }],
+		submenu: [{ id: "testimonials", label: "Testimonios", url: "/about-us/testimonials" }],
 	},
 	{
 		id: "services",
-		label: "Services",
+		label: "Servicios",
 		url: "/services",
 		submenu: [
-			{ id: "repairs", label: "Repairs", url: "/services/repairs" },
-			{ id: "maintenance", label: "Maintenance", url: "/services/maintenance" },
-			{ id: "car-sales", label: "Car Sales", url: "/services/car-sales" },
+			{ id: "repairs", label: "Reparaciones", url: "/services/repairs" },
+			{ id: "maintenance", label: "Mantenimiento", url: "/services/maintenance" },
+			{ id: "car-sales", label: "Ventas de Vehículos", url: "/services/car-sales" },
 		],
 	},
 	{
@@ -35,22 +35,22 @@ export const menuMain: MainMenuItem[] = [
 ];
 
 export const menuNavigation: MenuNavigation = {
-	prettyName: "Navigation",
+	prettyName: "Navegación",
 	items: [
 		{
-			name: "Home",
+			name: "Inicio",
 			url: "/",
 		},
 		{
-			name: "Cars",
+			name: "Vehículos",
 			url: "/cars",
 		},
 		{
-			name: "About Us",
+			name: "Acerca de Nosotros",
 			url: "/about-us",
 		},
 		{
-			name: "Services",
+			name: "Servicios",
 			url: "/services",
 		},
 		{
@@ -61,22 +61,22 @@ export const menuNavigation: MenuNavigation = {
 };
 
 export const menuService: MenuNavigation = {
-	prettyName: "Service",
+	prettyName: "Servicio",
 	items: [
 		{
-			name: "Home",
+			name: "Inicio",
 			url: "/",
 		},
 		{
-			name: "Cars",
+			name: "Vehículos",
 			url: "/cars",
 		},
 		{
-			name: "About Us",
+			name: "Acerca de Nosotros",
 			url: "/about-us",
 		},
 		{
-			name: "Services",
+			name: "Servicios",
 			url: "/services",
 		},
 		{
@@ -87,22 +87,22 @@ export const menuService: MenuNavigation = {
 };
 
 export const menuMisc: MenuNavigation = {
-	prettyName: "Miscellaneous",
+	prettyName: "Misceláneo",
 	items: [
 		{
-			name: "Home",
+			name: "Inicio",
 			url: "/",
 		},
 		{
-			name: "Cars",
+			name: "Vehículos",
 			url: "/cars",
 		},
 		{
-			name: "About Us",
+			name: "Acerca de Nosotros",
 			url: "/about-us",
 		},
 		{
-			name: "Services",
+			name: "Servicios",
 			url: "/services",
 		},
 		{
@@ -116,19 +116,19 @@ export const menuLegal: MenuNavigation = {
 	prettyName: "Legal",
 	items: [
 		{
-			name: "Home",
+			name: "Inicio",
 			url: "/",
 		},
 		{
-			name: "Cars",
+			name: "Vehículos",
 			url: "/cars",
 		},
 		{
-			name: "About Us",
+			name: "Acerca de Nosotros",
 			url: "/about-us",
 		},
 		{
-			name: "Services",
+			name: "Servicios",
 			url: "/services",
 		},
 		{

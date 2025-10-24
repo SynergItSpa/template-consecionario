@@ -1,8 +1,8 @@
 ---
-import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
-import Pill from "./Pill.astro";
+import { getCollection } from "astro:content";
 import { blogCategories } from "~/content.config";
+import Pill from "./Pill.astro";
 const allPosts = await getCollection("blog");
 const sortedPosts = allPosts.sort(
 	(a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime()
@@ -31,7 +31,7 @@ if (latestPosts.length === 0) {
 				{latestPosts[0].data.excerpt}
 			</p>
 
-			<a class="hover:underline block font-semibold" href={`/blog/${latestPosts[0].id}`}>Read more &rarr;</a>
+			<a class="hover:underline block font-semibold" href={`/blog/${latestPosts[0].id}`}>Leer más &rarr;</a>
 		</div>
 	</div>
 
@@ -52,7 +52,7 @@ if (latestPosts.length === 0) {
 					<p class="text-pretty lg:text-base line-clamp-2">{post.data.excerpt}</p>
 
 					<a class="hover:underline block font-semibold" href={`/blog/${post.id}`}>
-						Read more &rarr;
+						Leer más &rarr;
 					</a>
 				</div>
 			</>

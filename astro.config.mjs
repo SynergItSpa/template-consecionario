@@ -1,13 +1,13 @@
 // @ts-check
-import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
-import playformInline from "@playform/inline";
 import netlify from "@astrojs/netlify";
+import playformInline from "@playform/inline";
 import tailwindcss from "@tailwindcss/vite";
+import { defineConfig } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
-	site: "https://astro-hyperdrive.netlify.app",
+	site: "https://templateconcesionarios.com",
 	base: "/",
 	integrations: [mdx(), playformInline({ Critters: true })],
 	output: "static",

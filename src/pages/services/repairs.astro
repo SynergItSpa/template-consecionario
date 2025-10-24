@@ -1,33 +1,33 @@
 ---
-import Layout from "~/layouts/Layout.astro";
-import Section from "~/components/Section.astro";
 import Container from "~/components/Container.astro";
-import Heading from "~/components/Heading.astro";
 import FAQ from "~/components/Faq.astro";
+import Heading from "~/components/Heading.astro";
+import Section from "~/components/Section.astro";
+import Layout from "~/layouts/Layout.astro";
 
 const faqItems = [
     {
-        question: "What types of repairs do you offer?",
-        answer: "We offer a wide range of repair services including engine diagnostics, brake repairs, transmission services, and more."
+        question: "¿Qué tipos de reparaciones ofrecen?",
+        answer: "Ofrecemos una amplia gama de servicios de reparación que incluyen diagnóstico de motor, reparaciones de frenos, servicios de transmisión y más."
     },
     {
-        question: "How long does a typical repair take?",
-        answer: "The duration of a repair depends on the complexity of the issue. Our team will provide an estimated time after diagnosing the problem."
+        question: "¿Cuánto tiempo toma una reparación típica?",
+        answer: "La duración de una reparación depende de la complejidad del problema. Nuestro equipo proporcionará un tiempo estimado después de diagnosticar el problema."
     },
     {
-        question: "Do you use genuine parts for repairs?",
-        answer: "Yes, we use only the highest quality genuine parts to ensure the best performance and longevity of your vehicle."
+        question: "¿Utilizan piezas genuinas para las reparaciones?",
+        answer: "Sí, utilizamos únicamente piezas genuinas de la más alta calidad para asegurar el mejor rendimiento y longevidad de tu vehículo."
     }
 ];
 ---
 
-<Layout pageTitle="Repairs" title="Repairs">
+<Layout pageTitle="Reparaciones" title="Reparaciones">
     <Section class:list={"bg-gray-50"}>
         <Container>
             <Heading>
-                <h1 slot="heading-title">Repairs</h1>
+                <h1 slot="heading-title">Reparaciones</h1>
                 <p slot="heading-content">
-                    At HyperDrive, we offer top-notch repair services to keep your luxury car in perfect condition. Our team of skilled technicians is equipped with the latest tools and technology to handle any repair job, big or small.
+                    En TemplateConcesionarios, ofrecemos servicios de reparación de primera clase para mantener tu auto de lujo en perfectas condiciones. Nuestro equipo de técnicos calificados está equipado con las últimas herramientas y tecnología para manejar cualquier trabajo de reparación, grande o pequeño.
                 </p>
             </Heading>
         </Container>

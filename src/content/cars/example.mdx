@@ -19,7 +19,7 @@ general:
     price: 393695 # Number (required)
     salePrice: 350000 # Number (optional)
     bodyType: Coupe # Enum ["SUV", "Sedan", "Hatchback", "Coupe", "Convertible", "Pickup"] (required)
-    drivetrain: All-Wheel Drive # Enum ["Front-Wheel Drive", "Rear-Wheel Drive", "All-Wheel Drive", "Four-Wheel Drive"] (optional)
+    drivetrain: All-Wheel Drive # Enum ["Front-Wheel Drive", "Tracción Trasera", "Tracción Total", "Four-Wheel Drive"] (optional)
     doors: 2 # Number (required)
     seatingCapacity: 2 # Number (required)
     condition: New # Enum ["New", "Used", "Certified Pre-Owned"] (optional)
@@ -48,9 +48,9 @@ efficiency:
 
 options:
     features: # Array of strings (optional)
-        - Navigation System
+        - Sistema de Navegación
         - Bluetooth
-        - Backup Camera
+        - Cámara de Respaldo
 
 security:
     alarm: true # Boolean (optional)
@@ -59,7 +59,7 @@ security:
     abs: true # Boolean (optional)
     esp: true # Boolean (optional)
     tireCondition: New # Enum ["New", "Good", "Needs Replacement"] (optional)
-    safetyRating: 5 stars # String (optional)
+    safetyRating: 5 estrellas # String (optional)
 
 exterior:
     color: Yellow # String (required)
@@ -68,13 +68,13 @@ exterior:
     wheelType: Alloy # Enum ["Alloy", "Steel", "Carbon Fiber"] (optional)
 
 interior:
-    materialSeats: Leather # String (optional)
+    materialSeats: Cuero # String (optional)
     heatedSeats: true # Boolean (optional)
     ventilatedSeats: true # Boolean (optional)
 
 misc:
     vin: ZHWUR1ZD1MLA12345 # String (optional)
     registrationStatus: Registered # Enum ["Registered", "Unregistered", "Registration Pending"] (optional)
-    warranty: 3 years # String (optional)
-    dealerNotes: This Lamborghini Aventador is in pristine condition. # String (optional)
+    warranty: 3 años # String (optional)
+    dealerNotes: Este Lamborghini Aventador está en condición impecable. # String (optional)
 ---

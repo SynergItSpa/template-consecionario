@@ -1,35 +1,33 @@
 ---
-import Layout from "~/layouts/Layout.astro";
-import Section from "~/components/Section.astro";
 import Container from "~/components/Container.astro";
-import Heading from "~/components/Heading.astro";
 import FAQ from "~/components/Faq.astro";
+import Heading from "~/components/Heading.astro";
+import Section from "~/components/Section.astro";
+import Layout from "~/layouts/Layout.astro";
 
 const faqItems = [
 	{
-		question: "What maintenance services do you offer?",
-		answer: "We offer a comprehensive range of maintenance services including oil changes, tire rotations, brake inspections, and fluid checks.",
+		question: "¿Qué servicios de mantenimiento ofrecen?",
+		answer: "Ofrecemos una amplia gama de servicios de mantenimiento que incluyen cambios de aceite, rotaciones de neumáticos, inspecciones de frenos y verificaciones de fluidos.",
 	},
 	{
-		question: "How often should I get my car serviced?",
-		answer: "It's recommended to service your car every 6 months or 5,000 miles, whichever comes first. However, always refer to your vehicle's manual for specific guidelines.",
+		question: "¿Con qué frecuencia debo hacer servicio a mi auto?",
+		answer: "Se recomienda hacer servicio a tu auto cada 6 meses o 5,000 millas, lo que ocurra primero. Sin embargo, siempre consulta el manual de tu vehículo para pautas específicas.",
 	},
 	{
-		question: "Do you offer maintenance packages?",
-		answer: "Yes, we offer various maintenance packages tailored to meet your needs and ensure your car remains in top condition.",
+		question: "¿Ofrecen paquetes de mantenimiento?",
+		answer: "Sí, ofrecemos varios paquetes de mantenimiento adaptados para satisfacer tus necesidades y asegurar que tu auto se mantenga en las mejores condiciones.",
 	},
 ];
 ---
 
-<Layout pageTitle="Maintenance" title="Maintenance">
+<Layout pageTitle="Mantenimiento" title="Mantenimiento">
 	<Section class:list={"bg-gray-50"}>
 		<Container>
 			<Heading>
-				<h1 slot="heading-title">Maintenance</h1>
+				<h1 slot="heading-title">Mantenimiento</h1>
 				<p slot="heading-content">
-					At HyperDrive, we offer top-notch repair services to keep your luxury car in perfect condition. Our
-					team of skilled technicians is equipped with the latest tools and technology to handle any repair
-					job, big or small.
+					En TemplateConcesionarios, ofrecemos servicios de reparación de primera clase para mantener tu auto de lujo en perfectas condiciones. Nuestro equipo de técnicos calificados está equipado con las últimas herramientas y tecnología para manejar cualquier trabajo de reparación, grande o pequeño.
 				</p>
 			</Heading>
 		</Container>
