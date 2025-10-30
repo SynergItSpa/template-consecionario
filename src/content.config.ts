@@ -6,10 +6,10 @@ export const fuelTypes = ["Petrol", "Diesel", "Hybrid", "Electric", "CNG"] as co
 export const conditions = ["New", "Usado", "Certified Pre-Owned"] as const;
 export const transmission = ["Automatic", "Manual", "CVT", "Dual-Clutch"] as const;
 export const blogCategories = {
-	news: "indigo",
+	noticias: "indigo",
 	reviews: "pink",
 	tips: "purple",
-	events: "green",
+	eventos: "green",
 } as const;
 
 const categoryKeys = Object.keys(blogCategories) as [

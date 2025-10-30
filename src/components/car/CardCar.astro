@@ -1,9 +1,9 @@
 ---
-import type { Car } from "~/types";
 import { Image } from "astro:assets";
+import IconLogo from "~/assets/images/icons/logo.svg";
 import CarHighlights from "~/components/car/CardHighlights.astro";
 import CardPrice from "~/components/car/CardPrice.astro";
-import IconLogo from "~/assets/images/icons/logo.svg";
+import type { Car } from "~/types";
 const { car } = Astro.props as { car: Car };
 // console.log(car);
 ---
@@ -26,7 +26,7 @@ const { car } = Astro.props as { car: Car };
 				) : (
 					<div class="absolute inset-0 text-gray-400 size-full bg-gray-100 flex flex-col gap-4 items-center justify-center">
 						<IconLogo class="h-24" />
-						<span class="text-gray-400 font-bold italic">Coming Soon</span>
+						<span class="text-gray-400 font-bold italic">Próximamente</span>
 					</div>
 				)
 			}

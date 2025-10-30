@@ -1,6 +1,6 @@
 // Global variables
 export const siteLang = "es-ES";
-export const siteCurrency = "EUR";
+export const siteCurrency = "USD";
 export const siteDomain = "templateconcesionarios.com";
 export const siteName = "Template Concesionarios";
 export const siteSlogan = "El mejor template para concesionarios de vehículos, motos y lanchas!";

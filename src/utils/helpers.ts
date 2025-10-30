@@ -1,5 +1,5 @@
-import { siteLang, unitSystem, siteCurrency } from "~/data/config";
 import { getCollection } from "astro:content";
+import { siteCurrency, siteLang, unitSystem } from "~/data/config";
 
 /**
  * Formats a given mileage number into a localized string representation.
@@ -39,7 +39,7 @@ export function getMileageLabel(): string {
  * @returns A string representing the formatted price.
  */
 export function getPrice(price: number): string {
-	return new Intl.NumberFormat(siteLang, {
+	return new Intl.NumberFormat("en-US", {
 		style: "currency",
 		currency: siteCurrency,
 		minimumFractionDigits: 0,
@@ -53,7 +53,7 @@ export function getPrice(price: number): string {
  * @returns {string} The currency symbol.
  */
 export function getCurrencySymbol(): string {
-	const formatter = new Intl.NumberFormat(siteLang, {
+	const formatter = new Intl.NumberFormat("en-US", {
 		style: "currency",
 		currency: siteCurrency,
 		minimumFractionDigits: 0,

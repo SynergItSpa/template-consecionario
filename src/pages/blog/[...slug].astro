@@ -1,11 +1,11 @@
 ---
 import { Image } from "astro:assets";
-import Layout from "~/layouts/Layout.astro";
-import Section from "~/components/Section.astro";
-import Container from "~/components/Container.astro";
-import Article from "~/components/Article.astro";
 import { getCollection, render } from "astro:content";
 import IconArrowLeft from "~/assets/images/icons/arrow-left.svg";
+import Article from "~/components/Article.astro";
+import Container from "~/components/Container.astro";
+import Section from "~/components/Section.astro";
+import Layout from "~/layouts/Layout.astro";
 
 export async function getStaticPaths() {
 	const posts = await getCollection("blog");
@@ -28,7 +28,7 @@ const { Content } = await render(post);
 					class="mb-8 inline-block text-base font-medium transition hover:text-gray-500 not-prose"
 				>
 					<IconArrowLeft class="size-5 inline-block mr-1" />
-					<span>Return to Blog</span>
+					<span>Volver al Blog</span>
 				</a>
 
 				<h1 transition:name={`post-title-${post.id}`}>

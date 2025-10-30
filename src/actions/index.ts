@@ -13,19 +13,19 @@ export const server = {
 		}),
 		handler: async ({ amount, duration, finalinstallment }) => {
 			if (amount <= 0) {
-				throw new Error("Loan amount must be greater than 0.");
+				throw new Error("El monto del préstamo debe ser mayor que 0.");
 			}
 
 			if (duration <= 0) {
-				throw new Error("Loan duration must be greater than 0.");
+				throw new Error("La duración del préstamo debe ser mayor que 0.");
 			}
 
 			if (finalinstallment && finalinstallment >= amount) {
-				throw new Error("Final installment must be lower than the loan amount.");
+				throw new Error("La cuota final debe ser menor que el monto del préstamo.");
 			}
 
 			if (!interestRate) {
-				throw new Error("Interest rate is not set.");
+				throw new Error("La tasa de interés no está establecida.");
 			}
 
 			const monthlyInterestRate = interestRate / 100 / 12;

@@ -10,17 +10,52 @@ const pathname = rmTrailingSlash(Astro.url.pathname);
 
 <header>
 	<section class="bg-yellow-200">
-		<div class="container py-4 lg:py-8">
+		<div class="container py-4 xl:py-8">
 			<div class="flex justify-between items-center gap-x-4">
-				<a href="/">
+				<a href="/" class="flex-shrink-0">
 					<div class="flex items-center gap-x-2">
-						<IconLogo class="h-5 lg:h-8 inline-block" />
-						<span class="font-bold text-2xl lg:text-4xl">Template<span class="font-normal">Concesionarios</span></span>
+						<IconLogo class="h-5 xl:h-8 inline-block" />
+						<span class="font-bold text-2xl xl:text-4xl">Template<span class="font-normal">Concesionarios</span></span>
 					</div>
 				</a>
 
-				<nav class="max-lg:hidden" role="navigation" aria-label="Main Navigation">
-					<div class="flex lg:gap-x-12 items-center">
+				{/* Botón hamburguesa móvil */}
+				<button
+					id="mobile-menu-button"
+					type="button"
+					class="xl:hidden inline-flex items-center justify-center p-2 -mr-2 rounded-md text-gray-800 hover:bg-gray-800 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-800"
+					aria-controls="mobile-menu"
+					aria-expanded="false"
+				>
+					<span class="sr-only">Abrir menú principal</span>
+					{/* Icon cuando el menú está cerrado */}
+					<svg
+						class="block h-6 w-6"
+						id="menu-icon-closed"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke-width="1.5"
+						stroke="currentColor"
+						aria-hidden="true"
+					>
+						<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+					</svg>
+					{/* Icon cuando el menú está abierto */}
+					<svg
+						class="hidden h-6 w-6"
+						id="menu-icon-open"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke-width="1.5"
+						stroke="currentColor"
+						aria-hidden="true"
+					>
+						<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+					</svg>
+				</button>
+
+				<nav class="max-xl:hidden ml-auto" role="navigation" aria-label="Main Navigation">
+					<div class="flex xl:gap-x-12 items-center">
 						{
 							menuMain.map((item) => (
 								<div class="relative group">
@@ -59,10 +94,104 @@ const pathname = rmTrailingSlash(Astro.url.pathname);
 								</div>
 							))
 						}
-						<a href="/contact" class="button button-black ml-8">Contact</a>
+						<a href="https://be.synergit.cl/" class="button button-black ml-8">Contacto</a>
 					</div>
 				</nav>
 			</div>
 		</div>
+
+		{/* Menú móvil */}
+		<div
+			id="mobile-menu"
+			class="xl:hidden hidden bg-yellow-100 border-t border-gray-800/10"
+		>
+			<div class="px-4 pt-2 pb-6 space-y-1">
+				{
+					menuMain.map((item) => (
+						<>
+							<a
+								href={item.url}
+								class={`block px-3 py-3 rounded-md text-base font-medium transition ${
+									pathname === item.url
+										? "bg-gray-800 text-white"
+										: "text-gray-800 hover:bg-gray-800 hover:text-white"
+								}`}
+							>
+								{item.label}
+							</a>
+							{item.submenu && (
+								<div class="pl-4 space-y-1">
+									{item.submenu.map((subItem) => (
+										<a
+											href={subItem.url}
+											class={`block px-3 py-2 rounded-md text-sm font-medium transition ${
+												pathname === subItem.url
+													? "bg-gray-700 text-white"
+													: "text-gray-700 hover:bg-gray-700 hover:text-white"
+											}`}
+										>
+											{subItem.label}
+										</a>
+									))}
+								</div>
+							)}
+						</>
+					))
+				}
+				<a
+					href="https://be.synergit.cl/"
+					class="block w-full button button-black text-center mt-4"
+				>
+					Contacto
+				</a>
+			</div>
+		</div>
 	</section>
 </header>
+
+<script>
+	// Función para inicializar el menú móvil
+	function initMobileMenu() {
+		const button = document.getElementById('mobile-menu-button');
+		const menu = document.getElementById('mobile-menu');
+		const iconClosed = document.getElementById('menu-icon-closed');
+		const iconOpen = document.getElementById('menu-icon-open');
+
+		if (!button || !menu || !iconClosed || !iconOpen) return;
+
+		button.addEventListener('click', () => {
+			const isExpanded = button.getAttribute('aria-expanded') === 'true';
+			
+			// Toggle aria-expanded
+			button.setAttribute('aria-expanded', String(!isExpanded));
+			
+			// Toggle menu visibility
+			menu.classList.toggle('hidden');
+			
+			// Toggle icons
+			iconClosed.classList.toggle('hidden');
+			iconClosed.classList.toggle('block');
+			iconOpen.classList.toggle('hidden');
+			iconOpen.classList.toggle('block');
+		});
+
+		// Cerrar menú al hacer clic en un enlace
+		const menuLinks = menu.querySelectorAll('a');
+		menuLinks.forEach(link => {
+			link.addEventListener('click', () => {
+				menu.classList.add('hidden');
+				button.setAttribute('aria-expanded', 'false');
+				iconClosed.classList.remove('hidden');
+				iconClosed.classList.add('block');
+				iconOpen.classList.add('hidden');
+				iconOpen.classList.remove('block');
+			});
+		});
+	}
+
+	// Inicializar al cargar la página
+	initMobileMenu();
+
+	// Reinicializar después de cada navegación (para transiciones de Astro)
+	document.addEventListener('astro:after-swap', initMobileMenu);
+</script>

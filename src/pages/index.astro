@@ -54,7 +54,7 @@ import ShowCars from "~/components/ShowCars.astro";
 						Este template es ideal para concesionarios de vehículos, motos y lanchas. Con un diseño atractivo y funcionalidades completas.
 					</p>
 
-					<Button href="/cars" class:list={"mt-4"}>Ver ejemplos</Button>
+					<Button href="/cars" class:list={"mt-4"}>Ver vehículos</Button>
 				</div>
 				<div slot="hero-right">
 					<Image src={ImageCarDealer} alt="Template de concesionario" />
@@ -67,63 +67,60 @@ import ShowCars from "~/components/ShowCars.astro";
 	<Section>
 		<Container>
 			<Grid>
-				<GridItem image={ImageOne} imageAlt="Template de concesionario" span={2} link="/cars" As="a" xl>
-					<h2>Vehiculos destacados</h2>
+				<GridItem image={ImageOne} imageAlt="Vehículos" span={2} link="/cars" As="a" xl>
+					<h2>Vehículos destacados</h2>
 					<p>
-						Descubre la experiencia definitiva de conducir el auto de tus sueños. Ya sea que busques un SUV familiar o un elegante deportivo, en nuestro sitio encontrarás lo que buscas. Nuestro inventario se mantiene activamente actualizado para asegurar que encuentres la opción perfecta para ti o tu negocio.
+						Descubre la experiencia definitiva de conducir el vehículo de tus sueños. Ya sea que busques un SUV familiar, un sedán cómodo o un deportivo elegante, en nuestro inventario encontrarás opciones actualizadas y listas para tu negocio o proyecto personal.
 					</p>
 					<Button As="button" type="button" color="white-outline" class:list={"mt-4 group-hover:bg-white/10"}
-						>Ver todos los templates</Button
+						>Ver todos los vehículos</Button
 					>
 				</GridItem>
 
-				<GridItem image={ImageTwo} imageAlt="Template de concesionario" link="/cars" As="a">
-					<h3>Templates destacados</h3>
+				<GridItem image={ImageTwo} imageAlt="Vehículos" link="/cars" As="a">
+					<h3>Colección destacada</h3>
 					<p>
-						Descubre la experiencia definitiva con nuestra exclusiva colección de templates destacados. Ya sea que busques un diseño elegante para autos deportivos, un sitio confiable para vehículos familiares o un template ecológico para híbridos, tenemos algo para todos.
+						Explora nuestra selección curada de vehículos: desde clásicos hasta modelos ecológicos. Cada template está pensado para mostrar tu inventario con estilo y facilidad para el usuario.
 					</p>
 					<Button As="button" type="button" color="white-outline" class:list={"mt-4 group-hover:bg-white/10"}
-						>Ver todos los templates</Button
+						>Ver colección</Button
 					>
 				</GridItem>
 
 				<GridItem>
-					<h3>Templates destacados</h3>
+					<h3>Explora por categoría</h3>
 					<p>
-						Descubre la experiencia definitiva con nuestra exclusiva colección de templates destacados. Ya sea que busques un diseño elegante para autos deportivos, un sitio confiable para vehículos familiares o un template ecológico para híbridos, tenemos algo para todos.
-					</p>
-				</GridItem>
-						ya sea que busques un deportivo elegante, un vehículo familiar confiable o un híbrido ecológico, tenemos algo para todos.
+						Encuentra vehículos por tipo: sedanes, SUVs, pickups, motos y modelos híbridos. Filtra por precio, año y características para dar con la opción perfecta para tu concesionario.
 					</p>
 				</GridItem>
 			</Grid>
 		</Container>
 	</Section>
 
-	{/* Hero */}
+	<!-- {/* Hero */}
 	<Section class:list={"bg-gray-50"}>
 		<Container>
 			<Hero invert>
 				<div slot="hero-left" class="prose lg:max-w-2xl">
-					<h2>Bienvenido a nuestro template de concesionarios</h2>
+					<h2>Bienvenido a nuestro template de vehículos</h2>
 					<p>
-						Este template es ideal para concesionarios de vehículos, motos y lanchas. Con un diseño atractivo y funcionalidades completas.
+						Este template está pensado para mostrar todo tipo de vehículos: coches, motos y embarcaciones. Diseño centrado en el inventario, fichas detalladas y búsqueda avanzada para que tus vehículos destaquen.
 					</p>
 				</div>
 				<div slot="hero-right">
-					<Image src={ImageCarDealer} alt="Template de concesionario" />
+					<Image src={ImageCarDealer} alt="Template de vehículos" />
 				</div>
 			</Hero>
 		</Container>
-	</Section>
+	</Section> -->
 
-	{/* Cars */}
+	{/* Vehicles */}
 	<Section class:list={"bg-blue-50"}>
 		<Container>
 			<Heading>
-				<h2 slot="heading-title" class="mb-0">Templates destacados</h2>
+				<h2 slot="heading-title" class="mb-0">Vehículos destacados</h2>
 				<p slot="heading-content">
-					Busca el template perfecto aquí. Tenemos una amplia gama de templates para concesionarios de vehículos, motos y lanchas. Navega por nuestra colección y encuentra el template ideal que se adapte a tus necesidades y presupuesto.
+					Explora nuestro inventario destacado. Filtra por marca, modelo, año y precio para encontrar los vehículos ideales para tu negocio o clientes.
 				</p>
 			</Heading>
 
@@ -137,23 +134,23 @@ import ShowCars from "~/components/ShowCars.astro";
 			<Heading class:list={"text-center mx-auto"}>
 				<h2 slot="heading-title" class="text-balance">¿Por qué elegir nuestro template?</h2>
 				<p slot="heading-content">
-					Somos el proveedor líder de templates para concesionarios en el país. Con más de 20 años de experiencia, hemos ayudado a miles de clientes a crear sitios web impresionantes para sus negocios.
+					Con este template podrás llegar a un mayor número de personas y, lo más importante, convertirlos en clientes mediante un diseño atractivo y responsivo. A continuación puedes visualizar métricas que debes mostrar en tu página.
 				</p>
 			</Heading>
 
 			<Stats
 				items={[
 					{
-						title: "Templates vendidos",
+						title: "vehículos vendidos",
 						value: "259",
 						animateNumber: true,
 						animateFrom: 100,
 					},
 					{
 						title: "Clientes satisfechos",
-						value: "1088",
+						value: "259",
 						animateNumber: true,
-						animateFrom: 800,
+						animateFrom: 259,
 					},
 					{
 						title: "Experiencia",
@@ -168,7 +165,7 @@ import ShowCars from "~/components/ShowCars.astro";
 	<Section class:list={"bg-gradient-to-br from-gray-900 to-gray-700"}>
 		<Container>
 			<Heading class:list={"mb-0 lg:mb-0 prose-invert text-center mx-auto"}>
-				<h2 slot="heading-title">¿No encuentras el template ideal?</h2>
+				<h2 slot="heading-title">¿No encuentras el vehículo ideal?</h2>
 
 				<p slot="heading-content">
 					Nuestro equipo está aquí para ayudarte a encontrar el template perfecto que se adapte a tus necesidades y presupuesto. Ya sea que busques un diseño elegante para autos deportivos, un sitio confiable para vehículos familiares o un template ecológico para híbridos, tenemos algo para todos.
@@ -183,9 +180,9 @@ import ShowCars from "~/components/ShowCars.astro";
 	<Section class:list={"bg-gray-50"}>
 		<Container>
 			<Heading>
-				<h2 slot="heading-title" class="mb-0">Templates recientes</h2>
+				<h2 slot="heading-title" class="mb-0">Vehículos recientes</h2>
 				<p slot="heading-content">
-					Busca el template perfecto aquí. Tenemos una amplia gama de templates para concesionarios de vehículos, motos y lanchas. Navega por nuestra colección y encuentra el template ideal que se adapte a tus necesidades y presupuesto.
+					Busca el vehículo perfecto aquí. Tenemos una amplia gama de vehículos a la venta. Navega por nuestra colección y encuentra el vehículo ideal que se adapte a tus necesidades y presupuesto.
 				</p>
 			</Heading>
 
