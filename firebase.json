@@ -1,0 +1,12 @@
+{
+  "hosting": {
+    "site": "template-concesionario",
+    "public": "dist",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
+
