@@ -4,14 +4,59 @@ import IconLogo from "~/assets/images/icons/logo.svg";
 import CarHighlights from "~/components/car/CardHighlights.astro";
 import CardPrice from "~/components/car/CardPrice.astro";
 import type { Car } from "~/types";
-const { car } = Astro.props as { car: Car };
+
+const { car, index = 0 } = Astro.props as { car: Car; index?: number };
+
+const make = car.data.general.make?.toLowerCase() ?? "";
+const model = car.data.general.model?.toLowerCase() ?? "";
+const type = car.data.general.type?.toLowerCase() ?? "";
+const bodyType = car.data.general.bodyType?.toLowerCase() ?? "";
+const fuelType = car.data.efficiency?.fuelType?.toLowerCase() ?? "";
+const transmission = car.data.technical?.transmission?.toLowerCase() ?? "";
+const color = car.data.exterior?.color?.toLowerCase() ?? "";
+const condition = car.data.general.condition?.toLowerCase() ?? "";
+const availability = car.data.general.availability?.toLowerCase() ?? "";
+const year = car.data.history?.year ?? "";
+const mileage = car.data.history?.mileage ?? "";
+const regularPrice = car.data.general.price ?? 0;
+const salePrice = car.data.general.salePrice ?? "";
+const effectivePrice = car.data.general.salePrice ?? car.data.general.price ?? 0;
+const searchBlob = [
+	car.data.title,
+	car.data.general.make,
+	car.data.general.model,
+	car.data.general.bodyType,
+	car.data.general.type,
+	car.data.excerpt,
+	car.data.options?.join(" ") ?? "",
+	car.data.exterior?.color ?? "",
+	car.data.general.condition ?? "",
+]
+	.join(" ")
+	.toLowerCase();
 // console.log(car);
+
 ---
 
 <li
 	data-car-id={car.id}
-	data-car-on-sale={car.data.general.salePrice ? "true" : "false"}
-	data-car-available={car.data.general.availability}
+	data-car-index={index}
+	data-car-make={make}
+	data-car-model={model}
+	data-car-type={type}
+	data-car-body-type={bodyType}
+	data-car-fuel-type={fuelType}
+	data-car-transmission={transmission}
+	data-car-color={color}
+	data-car-condition={condition}
+	data-car-available={availability}
+	data-car-year={year}
+	data-car-mileage={mileage}
+	data-car-price={effectivePrice}
+	data-car-regular-price={regularPrice}
+	data-car-sale-price={salePrice}
+	data-car-on-sale={salePrice ? "true" : "false"}
+	data-car-search={searchBlob}
 	class="card-car bg-white shadow overflow-hidden xxl:transition xxl:border-transparent xxl:border-r-4 hover:lg:border-yellow-300"
 >
 	<a href={`/view/${car.id}`} class="relative isolate flex flex-col gap-8 xxl:flex-row">

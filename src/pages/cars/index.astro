@@ -1,0 +1,393 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import { siteName, priceSteps } from "~/data/config";
+import Layout from "~/layouts/Layout.astro";
+import Section from "~/components/Section.astro";
+import Container from "~/components/Container.astro";
+import CardCar from "~/components/car/CardCar.astro";
+import SidebarFilters from "~/components/sidebars/SidebarFilters.astro";
+import SearchSort from "~/components/SearchSort.astro";
+
+type Car = CollectionEntry<"cars">;
+
+const allCars = await getCollection("cars", ({ data }: { data: Car["data"] }) => data.misc?.hidden !== true);
+const cars = allCars.sort(
+	(a, b) => new Date(b.data.publishDate ?? "1970-01-01").getTime() - new Date(a.data.publishDate ?? "1970-01-01").getTime()
+);
+const makes = [...new Set(cars.map((car: Car) => car.data.general.make))].sort();
+const colors = [...new Set(cars.map((car: Car) => car.data.exterior.color))]
+	.filter(Boolean)
+	.sort();
+const count = cars.length;
+
+const sideBarData = {
+	makes,
+	colors,
+	count,
+	priceSteps,
+};
+---
+
+<Layout pageTitle={`Autos | ${siteName}`} description="Explora nuestra gama de autos en venta.">
+	<Section class:list={"bg-gray-50 max-lg:max-w-svw max-lg:overflow-hidden"}>
+		<Container class:list={"pt-0 max-lg:px-0 max-lg:max-w-full"}>
+			<div class="flex flex-col lg:flex-row">
+				<SidebarFilters data={sideBarData} />
+
+				<main class="lg:pl-16 grow">
+					<div class="lg:px-8">
+						<SearchSort />
+						<ul data-cars-container class="grid grid-cols-1 lg:gap-16">
+							{cars.map((car, index) => <CardCar car={car} index={index} />)}
+						</ul>
+						<p
+							data-empty-message
+							class="text-center text-gray-500 mt-8 hidden"
+						>
+							No se encontraron resultados
+						</p>
+					</div>
+				</main>
+			</div>
+		</Container>
+	</Section>
+</Layout>
+
+<script>
+	// @ts-nocheck
+	document.addEventListener("astro:page-load", () => {
+		const sidebarFiltersMobile = document.getElementById("sidebar-filter");
+		const buttonModalFilterOpen = document.getElementById("button-modal-filter-open");
+		const buttonModalFilterClose = document.getElementById("button-modal-filter-close");
+		const filterForm = document.getElementById("form-filter");
+		const searchForm = document.getElementById("form-search");
+		const searchInput = document.getElementById("search");
+		const sortSelect = document.getElementById("sort");
+		const sortSelectMobile = document.getElementById("sort-mobile");
+		const resultCountEl = document.getElementById("filter-result-found");
+		const cardsContainer = document.querySelector("[data-cars-container]");
+		const cards = cardsContainer
+			? Array.from(cardsContainer.querySelectorAll("[data-car-id]")).filter((card) => card instanceof HTMLElement)
+			: [];
+		const emptyMessage = document.querySelector("[data-empty-message]");
+		const makeModelDataScript = document.getElementById("filter-make-model-data");
+		const clearButtons = filterForm
+			? Array.from(filterForm.querySelectorAll("button[id^='clear-input-']")).filter((btn) => btn instanceof HTMLButtonElement)
+			: [];
+		const makeModelData = makeModelDataScript
+			? JSON.parse(makeModelDataScript.textContent || "[]")
+			: [];
+		const makeModelMap = makeModelData.reduce((acc, entry) => {
+			if (entry && entry.make && Array.isArray(entry.models)) {
+				acc[entry.make.toLowerCase()] = entry.models;
+			}
+			return acc;
+		}, {});
+		const state = new URLSearchParams(window.location.search);
+
+		function getModelSelect() {
+			if (!(filterForm instanceof HTMLFormElement)) return null;
+			const element = filterForm.elements.namedItem("model");
+			return element instanceof HTMLSelectElement ? element : null;
+		}
+
+		function getMakeSelect() {
+			if (!(filterForm instanceof HTMLFormElement)) return null;
+			const element = filterForm.elements.namedItem("make");
+			return element instanceof HTMLSelectElement ? element : null;
+		}
+
+		function syncUrl() {
+			const query = state.toString();
+			const newUrl = query ? `${window.location.pathname}?${query}` : window.location.pathname;
+			window.history.replaceState({}, "", newUrl);
+		}
+
+		function updateClearButtons() {
+			if (!(filterForm instanceof HTMLFormElement)) return;
+			clearButtons.forEach((button) => {
+				const field = button.id.replace("clear-input-", "");
+				const input = filterForm.elements.namedItem(field);
+				if (!(input instanceof HTMLSelectElement)) return;
+				const value = input.value ?? "all";
+				button.classList.toggle("hidden", !value || value === "all");
+			});
+		}
+
+		function updateModelOptions(selectedMake, presetValue) {
+			const modelSelect = getModelSelect();
+			if (!modelSelect) return;
+			const previous = presetValue ?? modelSelect.value;
+			modelSelect.innerHTML = '<option value="all">Todos</option>';
+			if (!selectedMake || selectedMake === "all") {
+				return;
+			}
+			const models = makeModelMap[selectedMake.toLowerCase()];
+			if (!models || models.length === 0) {
+				state.delete("model");
+				syncUrl();
+				return;
+			}
+			models
+				.slice()
+				.sort((a, b) => a.localeCompare(b))
+				.forEach((model) => {
+					const option = document.createElement("option");
+					option.value = model;
+					option.textContent = model;
+					modelSelect.appendChild(option);
+				});
+			if (previous && models.includes(previous)) {
+				modelSelect.value = previous;
+				state.set("model", previous);
+				syncUrl();
+			} else {
+				modelSelect.value = "all";
+				state.delete("model");
+				syncUrl();
+			}
+		}
+
+		function parsePriceRange(price) {
+			if (!price || price === "all") return null;
+			const [minRaw, maxRaw] = price.split("-");
+			const min = minRaw ? Number(minRaw) : 0;
+			const max = maxRaw ? Number(maxRaw) : Number.POSITIVE_INFINITY;
+			return { min, max };
+		}
+
+		function matchesCard(card, filters) {
+			if (!(card instanceof HTMLElement)) return false;
+			const data = card.dataset;
+			if (filters.make && filters.make !== "all" && data.carMake !== filters.make) return false;
+			if (filters.model && filters.model !== "all" && data.carModel !== filters.model) return false;
+			if (filters.color && filters.color !== "all" && data.carColor !== filters.color) return false;
+			if (filters.bodyType && filters.bodyType !== "all" && data.carBodyType !== filters.bodyType) return false;
+			if (filters.fuelType && filters.fuelType !== "all" && data.carFuelType !== filters.fuelType) return false;
+			if (filters.transmission && filters.transmission !== "all" && data.carTransmission !== filters.transmission)
+				return false;
+			if (filters.condition && filters.condition !== "all" && data.carCondition !== filters.condition) return false;
+			if (filters.make === "all" && filters.model && filters.model !== "all") return false;
+
+			const priceRange = parsePriceRange(filters.price);
+			if (priceRange) {
+				const price = Number(data.carPrice ?? "0");
+				if (Number.isNaN(price) || price < priceRange.min || price > priceRange.max) return false;
+			}
+
+			if (filters.search) {
+				const searchSource = data.carSearch ?? "";
+				const tokens = filters.search
+					.split(/\s+/)
+					.map((token) => token.trim())
+					.filter(Boolean);
+				if (tokens.length && !tokens.every((token) => searchSource.includes(token))) {
+					return false;
+				}
+			}
+
+			return true;
+		}
+
+		function getComparator(sortValue) {
+			if (!sortValue || sortValue === "all") {
+				return (a, b) =>
+					Number(a.dataset.carIndex ?? "0") - Number(b.dataset.carIndex ?? "0");
+			}
+			const [key, directionRaw] = sortValue.split("-");
+			const direction = directionRaw === "asc" ? 1 : -1;
+			switch (key) {
+				case "price":
+					return (a, b) => (Number(a.dataset.carPrice ?? "0") - Number(b.dataset.carPrice ?? "0")) * direction;
+				case "mileage":
+					return (a, b) => (Number(a.dataset.carMileage ?? "0") - Number(b.dataset.carMileage ?? "0")) * direction;
+				case "year":
+					return (a, b) => (Number(a.dataset.carYear ?? "0") - Number(b.dataset.carYear ?? "0")) * direction;
+				default:
+					return (a, b) =>
+						Number(a.dataset.carIndex ?? "0") - Number(b.dataset.carIndex ?? "0");
+			}
+		}
+
+		function sortCards(sortValue) {
+			if (!(cardsContainer instanceof HTMLElement)) return;
+			const comparator = getComparator(sortValue);
+			const sorted = [...cards].sort(comparator);
+			sorted.forEach((card) => cardsContainer.appendChild(card));
+		}
+
+		function applyFilters() {
+			const filters = {
+				make: (state.get("make") ?? "all").toLowerCase(),
+				model: (state.get("model") ?? "all").toLowerCase(),
+				color: (state.get("color") ?? "all").toLowerCase(),
+				bodyType: (state.get("bodyType") ?? "all").toLowerCase(),
+				fuelType: (state.get("fuelType") ?? "all").toLowerCase(),
+				transmission: (state.get("transmission") ?? "all").toLowerCase(),
+				condition: (state.get("condition") ?? "all").toLowerCase(),
+				price: state.get("price") ?? "",
+				search: (state.get("search") ?? "").trim().toLowerCase(),
+				sort: state.get("sort") ?? "all",
+			};
+
+			let visibleCount = 0;
+			cards.forEach((card) => {
+				if (!(card instanceof HTMLElement)) return;
+				const shouldShow = matchesCard(card, filters);
+				card.classList.toggle("hidden", !shouldShow);
+				if (shouldShow) visibleCount += 1;
+			});
+
+			sortCards(filters.sort);
+			if (resultCountEl) {
+				resultCountEl.textContent = `(${visibleCount})`;
+			}
+			emptyMessage?.classList.toggle("hidden", visibleCount !== 0);
+		}
+
+		function updateFormFromState() {
+			if (!(filterForm instanceof HTMLFormElement)) return;
+			const formControls = Array.from(filterForm.querySelectorAll("select"));
+			formControls.forEach((control) => {
+				if (!(control instanceof HTMLSelectElement)) return;
+				const value = state.get(control.name) ?? "all";
+				control.value = value;
+			});
+			const makeSelect = getMakeSelect();
+			const presetMake = state.get("make") ?? makeSelect?.value ?? "all";
+			updateModelOptions(presetMake, state.get("model") ?? null);
+		}
+
+		function updateSearchFromState() {
+			if (!(searchInput instanceof HTMLInputElement)) return;
+			searchInput.value = state.get("search") ?? "";
+		}
+
+		function updateSortFromState() {
+			const sortValue = state.get("sort") ?? "all";
+			if (sortSelect instanceof HTMLSelectElement) sortSelect.value = sortValue;
+			if (sortSelectMobile instanceof HTMLSelectElement) sortSelectMobile.value = sortValue;
+		}
+
+		function updateState(key, value) {
+			if (!value || value === "all") {
+				state.delete(key);
+			} else {
+				state.set(key, value);
+			}
+			syncUrl();
+		}
+
+		buttonModalFilterOpen?.addEventListener("click", () => {
+			sidebarFiltersMobile?.classList.remove("max-lg:opacity-0", "max-lg:pointer-events-none");
+		});
+
+		buttonModalFilterClose?.addEventListener("click", () => {
+			sidebarFiltersMobile?.classList.add("max-lg:opacity-0", "max-lg:pointer-events-none");
+		});
+
+		if (filterForm instanceof HTMLFormElement) {
+			filterForm.addEventListener("change", (event) => {
+				const target = event.target;
+				if (!(target instanceof HTMLSelectElement)) return;
+				updateState(target.name, target.value);
+				if (target.name === "make") {
+					updateModelOptions(target.value, state.get("model") ?? null);
+				}
+				updateClearButtons();
+				applyFilters();
+			});
+
+			filterForm.addEventListener("submit", (event) => {
+				event.preventDefault();
+				const formData = new FormData(filterForm);
+				formData.forEach((value, key) => {
+					updateState(key, value.toString());
+				});
+				const makeSelect = getMakeSelect();
+				if (makeSelect) {
+					updateModelOptions(makeSelect.value, state.get("model") ?? null);
+				}
+				updateClearButtons();
+				applyFilters();
+				sidebarFiltersMobile?.classList.add("max-lg:opacity-0", "max-lg:pointer-events-none");
+			});
+		}
+
+		clearButtons.forEach((button) => {
+			button.addEventListener("click", () => {
+				const field = button.id.replace("clear-input-", "");
+				const input = filterForm instanceof HTMLFormElement ? filterForm.elements.namedItem(field) : null;
+				if (!(input instanceof HTMLSelectElement)) return;
+				input.value = "all";
+				updateState(field, "all");
+				if (field === "make") {
+					updateModelOptions("all", null);
+				}
+				updateClearButtons();
+				applyFilters();
+			});
+		});
+
+		if (searchForm instanceof HTMLFormElement) {
+			searchForm.addEventListener("submit", (event) => {
+				event.preventDefault();
+				const value = searchInput instanceof HTMLInputElement ? searchInput.value.trim() : "";
+				updateState("search", value);
+				applyFilters();
+			});
+		}
+
+		if (searchInput instanceof HTMLInputElement) {
+			searchInput.addEventListener("input", () => {
+				if (!searchInput.value) {
+					updateState("search", "");
+					applyFilters();
+				}
+			});
+		}
+
+		if (sortSelect instanceof HTMLSelectElement) {
+			sortSelect.addEventListener("change", () => {
+				const value = sortSelect.value;
+				if (sortSelectMobile instanceof HTMLSelectElement) sortSelectMobile.value = value;
+				updateState("sort", value);
+				applyFilters();
+			});
+		}
+
+		if (sortSelectMobile instanceof HTMLSelectElement) {
+			sortSelectMobile.addEventListener("change", () => {
+				const value = sortSelectMobile.value;
+				if (sortSelect instanceof HTMLSelectElement) sortSelect.value = value;
+				updateState("sort", value);
+				applyFilters();
+			});
+		}
+
+		const presetButtons = Array.from(document.querySelectorAll("[data-preset-key]"));
+		presetButtons.forEach((button) => {
+			if (!(button instanceof HTMLButtonElement)) return;
+			button.addEventListener("click", () => {
+				const key = button.dataset.presetKey;
+				if (!key) return;
+				updateState(key, "all");
+				const input = filterForm instanceof HTMLFormElement ? filterForm.elements.namedItem(key) : null;
+				if (input instanceof HTMLSelectElement) {
+					input.value = "all";
+				}
+				if (key === "make") {
+					updateModelOptions("all", null);
+				}
+				updateClearButtons();
+				applyFilters();
+			});
+		});
+
+		updateFormFromState();
+		updateSearchFromState();
+		updateSortFromState();
+		updateClearButtons();
+		applyFilters();
+	});
+</script>

@@ -1,11 +1,10 @@
 // @ts-check
 import mdx from "@astrojs/mdx";
-import netlify from "@astrojs/netlify";
 import playformInline from "@playform/inline";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
 
-// https://astro.build/config
+// Dedicated Astro config for Firebase Hosting builds
 export default defineConfig({
 	site: "https://templateconcesionarios.com",
 	base: "/",
@@ -14,9 +13,6 @@ export default defineConfig({
 	devToolbar: {
 		enabled: false,
 	},
-	adapter: netlify({
-		imageCDN: false,
-	}),
 	vite: {
 		plugins: [tailwindcss()],
 	},
