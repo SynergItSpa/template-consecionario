@@ -2,8 +2,8 @@
 export const siteLang = "es-ES";
 export const siteCurrency = "USD";
 export const siteDomain = "templateconcesionarios.com";
-export const siteName = "Template Concesionarios";
-export const siteSlogan = "El mejor template para concesionarios de vehículos, motos y lanchas!";
+export const siteName = "Template Consecionario - Synertgit";
+export const siteSlogan = "Templates profesionales para Startups, Empresas Consolidadas, Portafolios y Landing Pages. Desarrollados con Astro y Tailwind CSS.";
 export const themeColor = "#fef08a";
 export const unitSystem = "metric";
 export const interestRate = 5.12;
